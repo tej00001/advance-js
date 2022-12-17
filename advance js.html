@@ -1,0 +1,624 @@
+1) this inside global scope
+
+2) this inside object
+
+3) this inside a method
+
+4) this inside function
+
+5) this inside an inner function
+
+6) this inside a constructor
+
+7) this inside class
+
+
+
+1)//this inside global scope
+
+this.name = "RAVITEJA"
+
+console.log(window.name)  
+
+
+
+2)//this inside object
+
+this.code = {
+
+ language:"javascript"
+
+}
+
+console.log(this.code.language)
+
+//(OR)
+
+let code={
+
+ language:"javascript"
+
+}
+
+console.log(code.language)  
+
+
+
+
+
+3)// this inside a method
+
+
+
+let code={
+
+ language:"javascript",
+
+  skill(){
+
+console.log(`learning ${this.language}`)
+
+}
+
+}
+
+code.skill();
+
+
+
+this.code = {
+
+ language:"javascript",
+
+
+
+ skill(){
+
+  console.log(`learning ${this.language}`)
+
+ }
+
+}
+
+this.code.skill();  
+
+
+
+4)//this inside function
+
+this.name = "RAVITEJA"
+
+ const skill = function(js){
+
+  console.log(`learning ${js} by ${this.name}`)
+
+ }
+
+
+
+ this.code={
+
+ name:"RAVITEJA"
+
+}
+
+
+
+let code = {
+
+ name:"RAVITEJA"
+
+}
+
+skill.call(this,"javascript")
+
+
+
+skill.call(this.code,"javascript")
+
+
+
+skill.call(code,"javascript")   
+
+
+
+5)// this inside an inner function
+
+this.name = "RAVITEJA"
+
+
+
+const innerfunction = function(js){
+
+ console.log(`learning ${js} by ${this.name}`)
+
+}
+
+innerfunction.call(this,"javascript")
+
+//OR
+
+innerfunction.bind(this)("javascript");   
+
+
+
+6)// this inside a constructor
+
+let createRoom =function(name){
+
+ this.table = `${name}'s Room `
+
+}
+
+createRoom.prototype.cleanTable = function(soap){
+
+ console.log(`cleaning ${this.table} using ${soap}`)
+
+  
+
+}
+
+const jillRoom = new createRoom("jill")
+
+const johnRoom = new createRoom("john")
+
+
+
+jillRoom.cleanTable("some soap");
+
+johnRoom.cleanTable("some soap")    
+
+
+
+7)// this inside class
+
+class createRoom{
+
+ constructor(name){
+
+  this.table = `${name}'s table`
+
+ }
+
+ cleanTable(soap){
+
+  console.log(`cleaning ${this.table} using ${soap}`)
+
+ }
+
+}
+
+
+
+const jillRoom = new createRoom("jill")
+
+const johnRoom = new createRoom("john")
+
+ 
+
+
+
+jillRoom.cleanTable("some soap");
+
+johnRoom.cleanTable("some soap")  
+
+
+
+
+
+3)class student{
+
+  constructor(name,age,ph_no,board_of_marks){
+
+
+
+    this.name=name;
+
+
+
+    this.age=age;
+
+
+
+    this.ph_no=ph_no;
+
+
+
+    this.board_of_marks=board_of_marks;
+
+}
+
+printdetails(){
+
+  console.log(this.name)
+
+  console.log(this.age)
+
+  console.log(this.ph_no)
+
+  console.log(this.board_of_marks)
+
+ }
+
+
+
+}
+
+
+
+const Raj=new student('raj',18,1234,34);
+
+Raj.printdetails();
+
+const Tej=new student('tej',15,2345,35);
+
+Tej.printdetails();
+
+const Chotu=new student('chotu',16,4567,60);
+
+Chotu.printdetails();
+
+const Aryan=new student('aryan',17,7891,70);
+
+Aryan.printdetails();
+
+const Charan=new student('charan',19,3456,80);
+
+Charan.printdetails();
+
+
+
+
+
+
+
+
+
+
+
+4)class student{
+
+
+
+   static count=0; //static variable to call
+
+
+
+   
+
+
+
+  constructor(name,age,ph_no,marks){
+
+
+
+    this.name=name;
+
+
+
+    this.age=age;
+
+
+
+    this.ph_no=ph_no;
+
+
+
+    this.marks=marks;
+
+
+
+    student.countStudent();
+
+
+
+  }
+
+
+
+  static countStudent(){
+
+
+
+    return(student.count++);   //this is how u access static variable
+
+
+
+  }
+
+
+
+  eligible(){
+
+
+
+    if(this.marks >=40){
+
+
+
+      console.log(`${this.name} age ${this.age} is eligible`);
+
+
+
+    }
+
+    else if(this.marks<40){
+
+
+
+      console.log(`${this.name} age ${this.age} is not eligible`);
+
+
+
+    }
+
+
+
+  }
+
+
+
+}
+
+
+
+const Raj=new student('raj',18,1234,34);
+
+
+
+const Tej=new student('tej',15,2345,35);
+
+
+
+const Chotu=new student('chotu',16,4567,60);
+
+
+
+const Aryan=new student('aryan',17,7891,70);
+
+
+
+const Charan=new student('charan',19,3456,80);
+
+
+
+console.log(student.countStudent());
+
+
+
+Raj.eligible();
+
+
+
+Tej.eligible();
+
+
+
+Chotu.eligible();
+
+
+
+Aryan.eligible();
+
+
+
+Charan.eligible();
+
+
+
+
+
+5)class student{
+
+
+
+  constructor(name,age){
+
+
+
+    this.name=name;
+
+
+
+    this.age=age;
+
+}
+
+printdetails(){
+
+  console.log(this.name)
+
+  console.log(this.age)
+
+ }
+
+}
+
+const Raj=new student('raj',27);
+
+Raj.printdetails();
+
+const Tej=new student('tej',24);
+
+Tej.printdetails();
+
+const Chotu=new student('chotu',22);
+
+Chotu.printdetails();
+
+const Aryan=new student('aryan',29);
+
+Aryan.printdetails();
+
+const Charan=new student('charan',19);
+
+Charan.printdetails();
+
+
+
+
+
+6)class student{
+
+   static count =0;
+
+ constructor(name,age){
+
+  this.name=name;
+
+  this.age=age;
+
+  student.countStudent();
+
+}
+
+ static countStudent(){
+
+    return(student.count++); 
+
+}
+
+}
+
+const Raj=new student('raj',27);
+
+const Tej=new student('tej',24);
+
+const Chotu=new student('chotu',22);
+
+console.log(student.countStudent());
+
+
+
+*)FAT ARROW FUNCTIONS:
+
+
+
+1)
+
+a)let getA = a => a;
+
+
+
+console.log(getA(5))
+
+
+
+
+
+b)//square a Number
+
+let square = a => a*a;
+
+console.log(square(15));
+
+
+
+c)//another way to do square a numbner
+
+let square = (a) => {return a*a}
+
+console.log(square(7))
+
+
+
+
+
+d)var a=4;
+
+let square = () => {return a*a}
+
+console.log(square())
+
+
+
+e)//get multiple
+
+let mult = (a,b) => {return a*b};
+
+console.log(mult(8,4));
+
+
+
+f)var x=function(){
+
+ this.value = 5;
+
+ setTimeout(() =>{
+
+  this.value++;
+
+  console.log(this.value)}, 1);
+
+}
+
+g) var z =new x();
+
+*/
+
+var x = function(...n){
+
+ console.log(n[2])
+
+
+
+}
+
+
+
+x(1,2,3);
+
+
+
+2)class Student{
+
+ constructor(name,age,marks)
+
+ {
+
+ this.name=name;
+
+ this.age=age;
+
+ this.marks=marks;
+
+ }
+
+ setPlacementAge(minPlacementAge){
+
+ //console.log(this)
+
+ return (minMarks) => {
+
+ // console.log("inside egligibleForCurrentCompany",this)
+
+  if(this.marks > minMarks && this.age > minPlacementAge){
+
+  console.log(this.name +" is ready for placement")
+
+  }
+
+  else{
+
+  console.log(this.name + " is not ready for placement")
+
+  }
+
+ }
+
+ }
+
+}
+
+const Raj = new Student("raj",35,65);
+
+const Tej = new Student("tej",15,60);
+
+
+
+Raj.setPlacementAge(18)(40);
+
+Tej.setPlacementAge(18)(40);
+
+
+
